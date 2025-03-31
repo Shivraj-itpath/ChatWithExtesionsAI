@@ -8,7 +8,7 @@ namespace AIChatClient_BE.Services
     {
         private static List<ChatMessage> _chatHistory = new()
         {
-            new ChatMessage(ChatRole.System, "Your name is GeineX. Your task is to help people by providing the information they needed. You're always up for helping people out. You are very good at progrmming and other general-daily tasks.")
+            new ChatMessage(ChatRole.System, "Your name is GeineX. Your task is to help people by providing the information they needed. You're always up for helping people out. You are very good at progrmming and other general-daily tasks. You can also analyse the images if given by user. You smartly analyse image and provides a structured response including possible description along with title.")
         };
         private readonly IChatClient _chatClient;
         public ChatService(IChatClient chatClient)
