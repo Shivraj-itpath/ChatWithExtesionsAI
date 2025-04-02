@@ -16,6 +16,9 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "ChatId": {
+                    "type": "string"
+                  },
                   "Message": {
                     "type": "string"
                   },
@@ -26,12 +29,46 @@
                 }
               },
               "encoding": {
+                "ChatId": {
+                  "style": "form"
+                },
                 "Message": {
                   "style": "form"
                 },
                 "File": {
                   "style": "form"
                 }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/newchat": {
+      "get": {
+        "tags": [
+          "AI"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
               }
             }
           }

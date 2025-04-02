@@ -1,4 +1,5 @@
-﻿using AIChatClient_BE.Models;
+﻿using System.Data;
+using AIChatClient_BE.Models;
 using AIChatClient_BE.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.AI;
@@ -31,10 +32,15 @@ namespace AIChatClient_BE.Controllers
 
             _chatService.AddToChatHistory(ChatRole.User, chatPrompt);
 
-            var response = await _chatClient.GetResponseAsync(_chatService.GetChatHistory());
+            var chatHistory = await _chatService.GetChatHistoryByChatId(chatPrompt.ChatId);
+
+            Thread.Sleep(1000);
+
+            var response = await _chatClient.GetResponseAsync(chatHistory);
 
             var assistantMessage = new PromptRequestModel
             {
+                ChatId = chatPrompt.ChatId,
                 Message = response.Text
             };
 
@@ -46,6 +52,12 @@ namespace AIChatClient_BE.Controllers
                 Message = "Response from AI",
                 Data = response.Text
             });
+        }
+
+        [HttpGet("newchat")]
+        public async Task<IActionResult> NewChat([FromBody] string chatId)
+        {
+            return Ok();
         }
 
         //[HttpPost("streamchat")]

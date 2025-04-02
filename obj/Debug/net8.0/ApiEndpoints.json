@@ -8,6 +8,11 @@
     "Order": 0,
     "Parameters": [
       {
+        "Name": "ChatId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
         "Name": "Message",
         "Type": "System.String",
         "IsRequired": false
@@ -16,6 +21,22 @@
         "Name": "File",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AIChatClient_BE.Controllers.AIController",
+    "Method": "NewChat",
+    "RelativePath": "newchat",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "chatId",
+        "Type": "System.String",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

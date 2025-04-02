@@ -5,8 +5,8 @@ namespace AIChatClient_BE.Services.Interface
 {
     public interface IChatService
     {
-        Task<string> GetResponse(string message);
         void AddToChatHistory(ChatRole role, PromptRequestModel prompt);
-        List<ChatMessage> GetChatHistory();
+        List<ChatMessage> NewChat(string chatId);
+        Task<List<ChatMessage>> GetChatHistoryByChatId(string chatId);
     }
 }
